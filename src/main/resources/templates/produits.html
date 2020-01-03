@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate ="Layout"
+>
+<head>
+<meta charset="utf-8">
+<title>page affichage produits</title>
+
+</head>
+<body>
+
+<p>Ma tables des produits</p>
+<div layout:fragment="content1">
+<div class="container">
+  <div class="row">
+   <div class="col-6">
+<div class="panel panel-primary">
+  <div class="panel-heading">Liste des Produits</div>
+     <div class="panel-body">
+     <form th:action="@{index}" method="get">
+     <label>Mot clé</label>
+    <input type="text" name="motCle" >
+    <button type="submit" class="btn btn-primary">chercher</button>
+</form>
+
+
+      <div class="panel-body">
+      
+<table class="table">
+<tr>
+<th>ID</th>
+<th>Description</th>
+<th>prix</th>
+<th>Guantité</th>
+</tr>
+
+
+<tr th:each= "p:${listDesProduits}">
+<td th:text = "${p.id}"></td>
+<td th:text = "${p.description}"></td>
+<td th:text = "${p.prix}"></td>
+<td th:text = "${p.quantite}"></td>
+<td>
+<a  class="btn btn-danger" th:href="@{/delete(id=${p.id}, page=${currentPage}, motCle=${motCle})}">Delete</a>
+</td>
+
+<td><a class="btn btn-danger" th:href="@{/edit(id=${p.id})}">EditProduit</a></td>
+</tr>
+
+</table>
+
+       
+<ul class ="nav nav-pills">
+
+<li class="${currentPage==status.index}?'active':''" th:each ="page,status:${pages}">
+<a th:href="@{/index(page=${status.index}, motCle=${motCle})}" th:text="${status.index}"></a>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+</body>
+</html>

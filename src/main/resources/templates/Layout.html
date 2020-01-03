@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org" xmlns:laout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="utf-8">
+<title>page layout</title>
+<link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a th:href="@{/index}">Home</a></li>
+      <li><a th:href="@{/getAll}">Produits</a></li>
+      <li><a href="#">categorie</a></li>
+      <li><a href="#">catalogue</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section layout:fragment="content1">
+</section>
+<div>
+<footer class="page-footer font-small indigo">
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+  </div>
+</div>
+</footer>
+</body>
+</html>
